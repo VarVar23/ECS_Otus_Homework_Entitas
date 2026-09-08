@@ -1,3 +1,4 @@
+using Gameplay.Movement;
 using Infrastructure;
 
 namespace Gameplay.General
@@ -6,7 +7,9 @@ namespace Gameplay.General
     {
         public GeneralFeature(ISystemFactory systemFactory)
         {
-            
+            Add(systemFactory.Create<CubeArmyFeature>());
+            Add(systemFactory.Create<MovementFeature>());
+            Add(systemFactory.Create<AttackFeature>());
         }
     }
 }

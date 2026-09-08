@@ -4,9 +4,9 @@ namespace Infrastructure
 {
     public class AssetProvider : IAssetProvider
     {
-        public GameObject Load(string path)
+        public T Load<T>(string path) where T : Object
         {
-            return (GameObject)Resources.Load(path);
+            return Resources.Load<T>(path);
         }
     }
 }
