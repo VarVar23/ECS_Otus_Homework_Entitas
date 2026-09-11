@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Gameplay.Hp hp { get { return (Gameplay.Hp)GetComponent(GameComponentsLookup.Hp); } }
-    public bool hasHp { get { return HasComponent(GameComponentsLookup.Hp); } }
+    public Gameplay.Target target { get { return (Gameplay.Target)GetComponent(GameComponentsLookup.Target); } }
+    public bool hasTarget { get { return HasComponent(GameComponentsLookup.Target); } }
 
-    public void AddHp(float newValue) {
-        var index = GameComponentsLookup.Hp;
-        var component = (Gameplay.Hp)CreateComponent(index, typeof(Gameplay.Hp));
+    public void AddTarget(GameEntity newValue) {
+        var index = GameComponentsLookup.Target;
+        var component = (Gameplay.Target)CreateComponent(index, typeof(Gameplay.Target));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceHp(float newValue) {
-        var index = GameComponentsLookup.Hp;
-        var component = (Gameplay.Hp)CreateComponent(index, typeof(Gameplay.Hp));
+    public void ReplaceTarget(GameEntity newValue) {
+        var index = GameComponentsLookup.Target;
+        var component = (Gameplay.Target)CreateComponent(index, typeof(Gameplay.Target));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveHp() {
-        RemoveComponent(GameComponentsLookup.Hp);
+    public void RemoveTarget() {
+        RemoveComponent(GameComponentsLookup.Target);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherHp;
+    static Entitas.IMatcher<GameEntity> _matcherTarget;
 
-    public static Entitas.IMatcher<GameEntity> Hp {
+    public static Entitas.IMatcher<GameEntity> Target {
         get {
-            if (_matcherHp == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Hp);
+            if (_matcherTarget == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Target);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherHp = matcher;
+                _matcherTarget = matcher;
             }
 
-            return _matcherHp;
+            return _matcherTarget;
         }
     }
 }

@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Gameplay.Hp hp { get { return (Gameplay.Hp)GetComponent(GameComponentsLookup.Hp); } }
-    public bool hasHp { get { return HasComponent(GameComponentsLookup.Hp); } }
+    public Gameplay.TakeDamage takeDamage { get { return (Gameplay.TakeDamage)GetComponent(GameComponentsLookup.TakeDamage); } }
+    public bool hasTakeDamage { get { return HasComponent(GameComponentsLookup.TakeDamage); } }
 
-    public void AddHp(float newValue) {
-        var index = GameComponentsLookup.Hp;
-        var component = (Gameplay.Hp)CreateComponent(index, typeof(Gameplay.Hp));
+    public void AddTakeDamage(float newValue) {
+        var index = GameComponentsLookup.TakeDamage;
+        var component = (Gameplay.TakeDamage)CreateComponent(index, typeof(Gameplay.TakeDamage));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceHp(float newValue) {
-        var index = GameComponentsLookup.Hp;
-        var component = (Gameplay.Hp)CreateComponent(index, typeof(Gameplay.Hp));
+    public void ReplaceTakeDamage(float newValue) {
+        var index = GameComponentsLookup.TakeDamage;
+        var component = (Gameplay.TakeDamage)CreateComponent(index, typeof(Gameplay.TakeDamage));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveHp() {
-        RemoveComponent(GameComponentsLookup.Hp);
+    public void RemoveTakeDamage() {
+        RemoveComponent(GameComponentsLookup.TakeDamage);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherHp;
+    static Entitas.IMatcher<GameEntity> _matcherTakeDamage;
 
-    public static Entitas.IMatcher<GameEntity> Hp {
+    public static Entitas.IMatcher<GameEntity> TakeDamage {
         get {
-            if (_matcherHp == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Hp);
+            if (_matcherTakeDamage == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.TakeDamage);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherHp = matcher;
+                _matcherTakeDamage = matcher;
             }
 
-            return _matcherHp;
+            return _matcherTakeDamage;
         }
     }
 }

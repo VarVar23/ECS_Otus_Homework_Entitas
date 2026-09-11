@@ -10,6 +10,7 @@ namespace Gameplay.General
             Add(systemFactory.Create<CubeArmyFeature>());
             Add(systemFactory.Create<MovementFeature>());
             Add(systemFactory.Create<AttackFeature>());
+            Add(systemFactory.Create<FinishFeature>());
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Gameplay.General
             Container.Bind<ICubeFactory>().To<CubeFactory>().AsSingle();
             Container.Bind<IArmyFactory>().To<ArmyFactory>().AsSingle();
             Container.Bind<IBulletFactory>().To<BulletFactory>().AsSingle();
+            Container.Bind<IFinishFactory>().To<FinishFactory>().AsSingle();
         }
 
         private void BindServices()

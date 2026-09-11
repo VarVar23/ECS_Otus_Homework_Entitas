@@ -19,24 +19,28 @@ public static class GameComponentsLookup {
     public const int Damage = 8;
     public const int Destroy = 9;
     public const int Enemy = 10;
-    public const int Id = 11;
-    public const int Direction = 12;
-    public const int Moving = 13;
-    public const int MovingForward = 14;
-    public const int Speed = 15;
-    public const int StopDistance = 16;
-    public const int Transform = 17;
-    public const int WorldPosition = 18;
-    public const int WorldRotation = 19;
-    public const int OffsetXArmy = 20;
-    public const int OffsetZArmy = 21;
-    public const int RandomOffsetZArmy = 22;
-    public const int Shoot = 23;
-    public const int StartShoot = 24;
-    public const int View = 25;
-    public const int Hp = 26;
+    public const int FindTarget = 11;
+    public const int Finish = 12;
+    public const int Hp = 13;
+    public const int Id = 14;
+    public const int Direction = 15;
+    public const int Moving = 16;
+    public const int MovingForward = 17;
+    public const int Speed = 18;
+    public const int StopDistance = 19;
+    public const int Transform = 20;
+    public const int WorldPosition = 21;
+    public const int WorldRotation = 22;
+    public const int OffsetXArmy = 23;
+    public const int OffsetZArmy = 24;
+    public const int RandomOffsetZArmy = 25;
+    public const int Shoot = 26;
+    public const int StartShoot = 27;
+    public const int TakeDamage = 28;
+    public const int Target = 29;
+    public const int View = 30;
 
-    public const int TotalComponents = 27;
+    public const int TotalComponents = 31;
 
     public static readonly string[] componentNames = {
         "Ally",
@@ -50,6 +54,9 @@ public static class GameComponentsLookup {
         "Damage",
         "Destroy",
         "Enemy",
+        "FindTarget",
+        "Finish",
+        "Hp",
         "Id",
         "Direction",
         "Moving",
@@ -64,8 +71,9 @@ public static class GameComponentsLookup {
         "RandomOffsetZArmy",
         "Shoot",
         "StartShoot",
-        "View",
-        "Hp"
+        "TakeDamage",
+        "Target",
+        "View"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -80,6 +88,9 @@ public static class GameComponentsLookup {
         typeof(Gameplay.Damage),
         typeof(Gameplay.Destroy),
         typeof(Gameplay.Enemy),
+        typeof(Gameplay.FindTarget),
+        typeof(Gameplay.Finish),
+        typeof(Gameplay.Hp),
         typeof(Gameplay.IdComponent),
         typeof(Gameplay.Movement.Direction),
         typeof(Gameplay.Movement.Moving),
@@ -94,7 +105,8 @@ public static class GameComponentsLookup {
         typeof(Gameplay.RandomOffsetZArmy),
         typeof(Gameplay.Shoot),
         typeof(Gameplay.StartShoot),
-        typeof(Gameplay.ViewComponent),
-        typeof(HpComponent)
+        typeof(Gameplay.TakeDamage),
+        typeof(Gameplay.Target),
+        typeof(Gameplay.ViewComponent)
     };
 }

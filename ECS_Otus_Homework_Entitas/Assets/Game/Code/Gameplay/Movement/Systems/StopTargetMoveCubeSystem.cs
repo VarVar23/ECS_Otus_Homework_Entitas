@@ -2,16 +2,16 @@ using Entitas;
 using Infrastructure;
 using System.Collections.Generic;
 
-namespace Gameplay
+namespace Gameplay.Movement
 {
-    public class StopShootSystem : IExecuteSystem
+    public class StopTargetMoveCubeSystem : IExecuteSystem
     {
         private readonly IPhysicsService _physicsService;
         private readonly IGroup<GameEntity> _ally;
         private readonly IGroup<GameEntity> _enemy;
         private List<GameEntity> _buffer = new(256);
 
-        public StopShootSystem(GameContext context, IPhysicsService physicsService)
+        public StopTargetMoveCubeSystem(GameContext context, IPhysicsService physicsService)
         {
             _physicsService = physicsService;
 
@@ -21,9 +21,8 @@ namespace Gameplay
                     GameMatcher.WorldPosition,
                     GameMatcher.Transform,
                     GameMatcher.StopDistance,
-                    GameMatcher.StartShoot)
-                .NoneOf(
-                    GameMatcher.FindTarget));
+                    GameMatcher.Moving,
+                    GameMatcher.Target));
 
             _enemy = context.GetGroup(GameMatcher
                 .AllOf(
@@ -31,28 +30,31 @@ namespace Gameplay
                     GameMatcher.WorldPosition,
                     GameMatcher.Transform,
                     GameMatcher.StopDistance,
-                    GameMatcher.StartShoot)
-                .NoneOf(
-                    GameMatcher.FindTarget));
+                    GameMatcher.Moving,
+                    GameMatcher.Target));
         }
 
         public void Execute()
         {
             foreach (var ally in _ally.GetEntities(_buffer))
             {
-                if (!_physicsService.RayCast(ally.worldPosition.Value, ally.transform.Value.forward, ally.stopDistance.Value, KnownValues.Layers.Enemy))
+                var direction = ally.target.Value.transform.Value.position - ally.transform.Value.position;
+
+                if (_physicsService.RayCast(ally.worldPosition.Value, direction, ally.stopDistance.Value, KnownValues.Layers.Enemy))
                 {
-                    ally.isStartShoot = false;
-                    ally.isFindTarget = true;
+                    ally.isMoving = false;
+                    ally.isStartShoot = true;
                 }
             }
 
             foreach (var enemy in _enemy.GetEntities(_buffer))
             {
-                if (!_physicsService.RayCast(enemy.worldPosition.Value, enemy.transform.Value.forward, enemy.stopDistance.Value, KnownValues.Layers.Ally))
+                var direction = enemy.target.Value.transform.Value.position - enemy.transform.Value.position;
+
+                if (_physicsService.RayCast(enemy.worldPosition.Value, direction, enemy.stopDistance.Value, KnownValues.Layers.Ally))
                 {
-                    enemy.isStartShoot = false;
-                    enemy.isFindTarget = true;
+                    enemy.isMoving = false;
+                    enemy.isStartShoot = true;
                 }
             }
         }

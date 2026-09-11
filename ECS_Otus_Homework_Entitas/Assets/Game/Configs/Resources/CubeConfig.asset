@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c126f4981ad94f4f88cfab688da3a44, type: 3}
   m_Name: CubeConfig
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.CubeConfig
-  <MinCooldown>k__BackingField: 0.5
-  <MaxCooldown>k__BackingField: 2
+  <MinCooldown>k__BackingField: 0.3
+  <MaxCooldown>k__BackingField: 1
   <Hp>k__BackingField: 100
   <MinSpeed>k__BackingField: 3
   <MaxSpeed>k__BackingField: 7

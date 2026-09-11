@@ -27,8 +27,10 @@ namespace Gameplay
             view.transform.position = position;
             view.transform.rotation = Quaternion.Euler(rotation);
 
-            entity.AddView(view);
+            entity.AddHp(config.Hp);
             entity.AddDamage(config.Damage);
+
+            entity.AddView(view);
             entity.AddWorldPosition(position);
             entity.AddWorldRotation(rotation);
             entity.AddSpeed(config.Speed);
@@ -58,8 +60,10 @@ namespace Gameplay
             view.transform.position = position;
             view.transform.rotation = Quaternion.Euler(rotation);
 
-            entity.AddView(view);
+            entity.AddHp(config.Hp);
             entity.AddDamage(config.Damage);
+
+            entity.AddView(view);
             entity.AddWorldPosition(position);
             entity.AddWorldRotation(rotation);
             entity.AddSpeed(config.Speed);

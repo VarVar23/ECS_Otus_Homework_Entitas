@@ -13,7 +13,8 @@ namespace Gameplay
 
                 if (otherEntityMono != null)
                 {
-                    otherEntityMono.Entity.isDestroy = true;
+                    otherEntityMono.Entity.ReplaceTakeDamage(Entity.damage.Value);
+                    Entity.isDestroy = true;
                 }    
             }
         }

@@ -26,6 +26,7 @@ namespace Gameplay
 
             float cooldown = Random.Range(config.MinCooldown, config.MaxCooldown);
 
+            entity.AddHp(config.Hp);
             entity.AddId(_identifierService.Next());
             entity.AddView(created);
             entity.AddDirection(Vector3.zero);
@@ -56,6 +57,7 @@ namespace Gameplay
 
             float cooldown = Random.Range(config.MinCooldown, config.MaxCooldown);
 
+            entity.AddHp(config.Hp);
             entity.AddId(_identifierService.Next());
             entity.AddView(created);
             entity.AddDirection(Vector3.zero);
