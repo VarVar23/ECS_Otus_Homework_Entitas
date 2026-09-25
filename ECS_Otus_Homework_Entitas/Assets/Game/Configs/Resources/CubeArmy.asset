@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a7613bd4a862442b9b9e670fbbc556, type: 3}
   m_Name: CubeArmy
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Movement.CubeArmyConfig
-  <CountAllyCubes>k__BackingField: 50
-  <CountEnemiesCubes>k__BackingField: 50
+  <CountAllyCubes>k__BackingField: 100
+  <CountEnemiesCubes>k__BackingField: 100
   <OffsetX>k__BackingField: 1.3
   <OffsetZ>k__BackingField: 40
   <RandomOffsetZ>k__BackingField: 1

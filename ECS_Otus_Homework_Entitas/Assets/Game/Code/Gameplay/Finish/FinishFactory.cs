@@ -8,7 +8,7 @@ namespace Gameplay
         {
             var entity = CreateEntity.Game();
             entity.isFinish = true;
-
+  
             return entity;
         }
     }
